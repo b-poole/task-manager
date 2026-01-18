@@ -1,18 +1,79 @@
-# React + Vite
+# Task Manager App 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **React + Vite Task Manager** application designed to help you add, edit, delete, and track tasks. This project demonstrates **React fundamentals**, component-based architecture, state management, and localStorage persistence — perfect for showcasing skills as a junior frontend developer.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## React Compiler
+- **React** (Functional Components & Hooks: useState, useEffect)  
+- **Vite** (Fast development build tool)  
+- **JavaScript (ES6+)**  
+- **CSS** for styling  
+- **localStorage** for client-side persistence  
+- **Git & GitHub** for version control  
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## ⚡ Features
 
-## Expanding the ESLint configuration
+- Add new tasks  
+- Delete tasks  
+- Edit existing tasks  
+- Mark tasks as completed  
+- Persist tasks across browser reloads using localStorage  
+- Clean and readable component structure  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📸 Screenshot / Demo
+
+*(Replace this with your actual screenshot or GIF of the app)*
+
+![Task Manager Screenshot](./screenshot.png)
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/task-manager.git
+cd task-manager
+```
+2. Install Dependencies
+```bash
+npm install
+```
+3. Start the development server
+```bash
+npm run dev
+```
+Open the app in your browser (usually http://localhost:5173/)
+
+💡 Next Steps / Enhancements
+
+Add filtering (All / Active / Completed)
+
+Add due dates for tasks
+
+Integrate with a backend API
+
+Deploy live with Netlify or Vercel
+
+📂 Project Structure
+task-manager/
+├─ src/
+│  ├─ App.jsx
+│  ├─ main.jsx
+│  ├─ App.css
+├─ public/
+├─ package.json
+└─ vite.config.js
+
+📌 About Me
+
+I’m an aspiring frontend developer building hands-on projects in React to strengthen my skills. Check out my [LinkedIn](www.linkedin.com/in/barrett-poole-630a3a145)
+ and [GitHub](https://github.com/b-poole)
+ for more projects.
