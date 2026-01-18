@@ -1,7 +1,6 @@
 # Task Manager App 📝
 
-A simple **React + Vite Task Manager** application designed to help you add, edit, delete, and track tasks. This project demonstrates **React fundamentals**, component-based architecture, state management, and localStorage persistence — perfect for showcasing skills as a junior frontend developer.
-
+A simple **React + Vite Task Manager** application designed to help you add, edit, delete, and track tasks. This project demonstrates **React fundamentals**, component-based architecture, state management, and localStorage persistence.
 ---
 
 ## 🔧 Tech Stack
@@ -27,8 +26,7 @@ A simple **React + Vite Task Manager** application designed to help you add, edi
 ---
 
 ## 📸 Screenshot / Demo
-
-*(Replace this with your actual screenshot or GIF of the app)*
+TODO: Add a screenshot or GIF when UI is fully determined
 
 ![Task Manager Screenshot](./screenshot.png)
 
@@ -39,7 +37,7 @@ A simple **React + Vite Task Manager** application designed to help you add, edi
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/task-manager.git
+git clone https://github.com/b-poole/task-manager.git
 cd task-manager
 ```
 2. Install Dependencies
