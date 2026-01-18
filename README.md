@@ -50,25 +50,12 @@ npm run dev
 ```
 Open the app in your browser (usually http://localhost:5173/)
 
-💡 Next Steps / Enhancements
+💡 TODO List
 
-Add filtering (All / Active / Completed)
-
-Add due dates for tasks
-
-Integrate with a backend API
-
-Deploy live with Netlify or Vercel
-
-📂 Project Structure
-task-manager/
-├─ src/
-│  ├─ App.jsx
-│  ├─ main.jsx
-│  ├─ App.css
-├─ public/
-├─ package.json
-└─ vite.config.js
+-Add filtering (All / Active / Completed)
+-Add due dates for tasks
+-Integrate with a backend API
+-Deploy live with Netlify or Vercel
 
 📌 About Me
 
