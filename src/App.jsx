@@ -1,5 +1,11 @@
 import './App.css'
 
+const notes = [
+  { id: 1, name: "Sample Task 1", completed: false },
+  { id: 2, name: "Sample Task 2", completed: false },
+  { id: 3, name: "Sample Task 3", completed: false }
+]
+
 function App() {
 
   return (
@@ -16,11 +22,11 @@ function Title() {
   )
 }
 
-function Task() {
+function TaskItem({ note }) {
   return (
     <div className='task'>
       <input type="checkbox" />
-      <span className='task-name'>Sample Task</span>
+      <span className='task-name'>{note.name}</span>
     </div>
   )
 }
@@ -28,9 +34,9 @@ function Task() {
 function TaskList() {
   return (
     <div className='task-list'>
-      <Task />
-      <Task />
-      <Task />
+      {notes.map(note => (
+        <TaskItem key={note.id} note={note} />
+      ))}
     </div>
   )
 }

@@ -25,20 +25,16 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 .title {
   font-weight: 600;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  text-align: center; /* Optional: centers the text horizontally */
-  background-color: #242424; /* Optional: matches your dark theme background */
-  padding: 1rem 0; /* Optional: adds some vertical space */
+  text-align: center; 
+  background-color: #242424; 
+  padding: 1rem 0; 
 }
 
 h1 {
