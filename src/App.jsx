@@ -2,23 +2,34 @@ import './App.css'
 import { useState } from 'react';
 
 const notes = [
-  { id: 1, name: "Sample Task 1", completed: false },
-  { id: 2, name: "Sample Task 2", completed: false },
-  { id: 3, name: "Sample Task 3", completed: false }
+  { id: 1, name: "Sample Task 1", dueDate: null, completed: false },
+  { id: 2, name: "Sample Task 2", dueDate: null, completed: false },
+  { id: 3, name: "Sample Task 3", dueDate: "10-15-2023", completed: false }
 ]
 
 function App() {
   const [task_list, setTaskList] = useState(notes);
 
+  function onToggle(toggledTask) {
+    setTaskList(newList => newList.map(task => task.id === toggledTask.id ? toggledTask : task));
+  }
+
   function handleAddTask(newTask) {
-    alert('Task added!');
-    setTaskList(prev => [...prev, newTask]);
+    setTaskList(newList => [...newList, newTask]);
+  }
+
+  function handleDeleteTask(taskId) {
+    setTaskList(newList => newList.filter(task => task.id !== taskId));
   }
 
   return (
     <>
       <Header onAddTask={handleAddTask} />
-      <TaskList tasks = {task_list} />
+      <TaskList tasks = {task_list} onDeleteTask={handleDeleteTask} onToggle={onToggle} />
+      <hr className="completed-tasks-hr" />
+      <h2 className='completed-tasks-title'>Completed Tasks</h2>
+      <hr />
+      <CompletedTasks tasks={task_list} onDeleteTask={handleDeleteTask} onToggle={onToggle} />
     </>
   )
 }
@@ -54,13 +65,15 @@ function TaskForm({ onAddTask }) {
     setDueDate(event.target.value);
   }
 
-  function handleAddTask(event) {
-    event.preventDefault();
-    alert('Task added!' + '\nTask Name: ' + task_name + '\nDue Date: ' + due_date);
+  function handleAddTask() {
+    if (!task_name.trim()) {
+      alert("Task name cannot be empty.");
+      return;
+    }
 
     onAddTask({
       id: Date.now(),
-      name: task_name,
+      name: task_name.trim(),
       completed: false,
       dueDate: due_date
     });
@@ -80,48 +93,75 @@ function TaskForm({ onAddTask }) {
   )
 }
 
-function TaskItem({ note, dueDate = null}) {
-  const [task_state, setTaskState] = useState(note.completed);
+function TaskItem({ task, dueDate = null, onToggle, onDeleteTask}) {
 
-  function handleTaskCompletedChange() {
-    setTaskState(!task_state);
+  function handleCheckboxChange(event) {
+    onToggle({ ...task, completed: event.target.checked });
   }
 
   return (
     <tr className='task'>
       <td>
-        <input type="checkbox" checked={task_state} onChange={handleTaskCompletedChange} />
+        <input type="checkbox" name="completed" checked={task.completed} onChange={handleCheckboxChange} />
       </td>
-      <td className='task-name'>
-        {note.name}
+      <td className='task-name' name="name">
+        {task.name}
       </td>
-      <td className = 'due-date'>
-        {dueDate ? dueDate : note.dueDate}
+      <td className = 'due-date' name="dueDate">
+        {dueDate ? dueDate : task.dueDate}
       </td>
       <td>
-        {task_state ? "Completed" : "Pending"}
+        {task.completed ? "Completed" : "Pending"}
+      </td>
+      <td>
+        <button className='delete-button' onClick={() => onDeleteTask(task.id)}>Delete</button>
       </td>
     </tr>
   )
 }
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, onDeleteTask, onToggle }) {
   return (
       <table width="100%" className='task-list'>
         <thead>
           <tr>
-            <th width="10%">Task</th>
-            <th width="50%">Name</th>
-            <th width="20%" min-width="10em">Due Date</th>
-            <th width="20%">Status</th>
+            <th width="10%"><span role="img" aria-label="checkmark">✔️</span></th>
+            <th width="30%">Name</th>
+            <th width="15%">Due Date</th>
+            <th width="25%">Status</th>
+            <th width="20%">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {tasks.map(note => (
-          <TaskItem key={note.id} note={note} dueDate={note.dueDate} completed={false} />
+          {tasks.map(task => (
+          <TaskItem key={task.id} task={task} dueDate={task.dueDate} completed={false} onToggle={onToggle} onDeleteTask={onDeleteTask} />
         ))}
         </tbody>
       </table>
   )
 }
+
+function CompletedTasks({ tasks, onDeleteTask, onToggle }) {
+  const completedTasks = tasks.filter(task => task.completed);
+
+  return (
+    <table width="100%" className='completed-tasks'>
+      <thead>
+        <tr>
+          <th width="10%"><span role="img" aria-label="checkmark">✔️</span></th>
+          <th width="30%">Name</th>
+          <th width="15%">Due Date</th>
+          <th width="25%">Status</th>
+          <th width="20%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {completedTasks.map(task => (
+          <TaskItem key={task.id} task={task} dueDate={task.dueDate} completed={true} onToggle={onToggle} onDeleteTask={onDeleteTask} />
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 export default App
