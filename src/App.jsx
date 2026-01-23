@@ -10,7 +10,7 @@ const notes = [
 function App() {
   const [task_list, setTaskList] = useState(notes);
 
-  function onToggle(toggledTask) {
+  function onCompletedTaskCheckboxToggle(toggledTask) {
     setTaskList(newList => newList.map(task => task.id === toggledTask.id ? toggledTask : task));
   }
 
@@ -25,11 +25,7 @@ function App() {
   return (
     <>
       <Header onAddTask={handleAddTask} />
-      <TaskList tasks = {task_list} onDeleteTask={handleDeleteTask} onToggle={onToggle} />
-      <hr className="completed-tasks-hr" />
-      <h2 className='completed-tasks-title'>Completed Tasks</h2>
-      <hr />
-      <CompletedTasks tasks={task_list} onDeleteTask={handleDeleteTask} onToggle={onToggle} />
+      <Body tasks={task_list} onCompletedTaskCheckboxToggle={onCompletedTaskCheckboxToggle} onDeleteTask={handleDeleteTask} />
     </>
   )
 }
@@ -93,10 +89,20 @@ function TaskForm({ onAddTask }) {
   )
 }
 
-function TaskItem({ task, dueDate = null, onToggle, onDeleteTask}) {
+function FilterBar({ onFilter }) {
+  return (
+    <div className='filter-bar'>
+      <button className='filter-button' onClick={() => onFilter('all')}>All Tasks</button>
+      <button className='filter-button' onClick={() => onFilter('pending')}>Pending Tasks</button>
+      <button className='filter-button' onClick={() => onFilter('completed')}>Completed Tasks</button>
+    </div>
+  )
+}
+
+function TaskItem({ task, dueDate = null, onCompletedTaskCheckboxToggle, onDeleteTask}) {
 
   function handleCheckboxChange(event) {
-    onToggle({ ...task, completed: event.target.checked });
+    onCompletedTaskCheckboxToggle({ ...task, completed: event.target.checked });
   }
 
   return (
@@ -114,13 +120,16 @@ function TaskItem({ task, dueDate = null, onToggle, onDeleteTask}) {
         {task.completed ? "Completed" : "Pending"}
       </td>
       <td>
-        <button className='delete-button' onClick={() => onDeleteTask(task.id)}>Delete</button>
+        <button className='delete-button' onClick={() => {
+          console.log("Deleting task with id:", task.id);
+          onDeleteTask(task.id);
+        }}>Delete</button>
       </td>
     </tr>
   )
 }
 
-function TaskList({ tasks, onDeleteTask, onToggle }) {
+function TaskList({ tasks, onDeleteTask, onCompletedTaskCheckboxToggle }) {
   return (
       <table width="100%" className='task-list'>
         <thead>
@@ -134,14 +143,42 @@ function TaskList({ tasks, onDeleteTask, onToggle }) {
         </thead>
         <tbody>
           {tasks.map(task => (
-          <TaskItem key={task.id} task={task} dueDate={task.dueDate} completed={false} onToggle={onToggle} onDeleteTask={onDeleteTask} />
+          <TaskItem 
+            key={task.id} 
+            task={task} 
+            dueDate={task.dueDate} 
+            completed={false} 
+            onCompletedTaskCheckboxToggle={onCompletedTaskCheckboxToggle} 
+            onDeleteTask={onDeleteTask} 
+          />
         ))}
         </tbody>
       </table>
   )
 }
 
-function CompletedTasks({ tasks, onDeleteTask, onToggle }) {
+function Body({tasks, onCompletedTaskCheckboxToggle, onDeleteTask}) {
+  const [filter, setFilter] = useState('all');
+
+  function onFilter(filterType) {
+    setFilter(filterType);
+  }
+
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'pending') return !task.completed;
+    if (filter === 'completed') return task.completed;
+    return true;
+  });
+
+  return (
+    <>
+      <FilterBar onFilter={onFilter} />
+      <TaskList tasks={filteredTasks} onCompletedTaskCheckboxToggle={onCompletedTaskCheckboxToggle} onDeleteTask={onDeleteTask} />
+    </>
+  )
+}
+
+function CompletedTasks({ tasks, onDeleteTask, onCompletedTaskCheckboxToggle }) {
   const completedTasks = tasks.filter(task => task.completed);
 
   return (
@@ -157,7 +194,8 @@ function CompletedTasks({ tasks, onDeleteTask, onToggle }) {
       </thead>
       <tbody>
         {completedTasks.map(task => (
-          <TaskItem key={task.id} task={task} dueDate={task.dueDate} completed={true} onToggle={onToggle} onDeleteTask={onDeleteTask} />
+          <TaskItem key={task.id} task={task} dueDate={task.dueDate} completed={true} 
+            onCompletedTaskCheckboxToggle={onCompletedTaskCheckboxToggle} onDeleteTask={onDeleteTask} />
         ))}
       </tbody>
     </table>
