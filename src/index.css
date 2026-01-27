@@ -123,6 +123,7 @@ button:focus-visible {
   }
 }
 
+<<<<<<< HEAD
 .modal-backdrop {
   position: fixed;
   inset: 0; /* top:0 right:0 bottom:0 left:0 */
@@ -145,3 +146,5 @@ button:focus-visible {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+=======
+>>>>>>> origin/main
