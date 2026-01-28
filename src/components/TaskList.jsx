@@ -1,6 +1,6 @@
 import TaskItem from './TaskItem.jsx';
 
-export default function TaskList({ tasks, onDeleteTask, onCompletedTaskCheckboxToggle, onShowEditTaskModal }) {
+export default function TaskList({ tasks, onDeleteTask, onCompletedTask, onShowEditTaskModal }) {
   return (
       <table width="100%" className='task-list'>
         <thead>
@@ -19,7 +19,7 @@ export default function TaskList({ tasks, onDeleteTask, onCompletedTaskCheckboxT
             task={task} 
             dueDate={task.dueDate} 
             completed={false} 
-            onCompletedTaskCheckboxToggle={onCompletedTaskCheckboxToggle} 
+            onCompletedTask={onCompletedTask} 
             onDeleteTask={onDeleteTask}
             onShowEditTaskModal={onShowEditTaskModal}
           />

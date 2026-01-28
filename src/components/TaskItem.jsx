@@ -1,7 +1,7 @@
-export default function TaskItem({ task, dueDate = null, onCompletedTaskCheckboxToggle, onDeleteTask, onShowEditTaskModal }) {
+export default function TaskItem({ task, dueDate = null, onCompletedTask, onDeleteTask, onShowEditTaskModal }) {
 
   function handleCheckboxChange(event) {
-    onCompletedTaskCheckboxToggle({ ...task, completed: event.target.checked });
+    onCompletedTask({ ...task, completed: event.target.checked });
   }
 
   return (
