@@ -1,0 +1,20 @@
+.form-task-name {grid-area: task-name;}
+.form-due-date {grid-area: due-date;}
+.form-task-input {grid-area: task-input;}
+.form-due-date-input {grid-area: due-date-input;}
+.form-add-task-button {grid-area: add-task-button;} 
+
+.task-form {
+  grid-column: 4;
+  display: grid;
+  gap: 0.8em;
+  grid-template-areas: 
+    "task-name       due-date"
+    "task-input      due-date-input"
+    "add-task-button add-task-button";
+
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+}

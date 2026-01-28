@@ -22,73 +22,11 @@ a:hover {
   color: #535bf2;
 }
 
-
 body {
   margin: 0;
   display: flex;
   width: 100%;
   box-sizing: border-box;
-}
-
-.completed-tasks-hr {
-  margin: 3em 0;
-  border: none;
-}
-
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr 1fr;
-  width: 100%;
-  align-items: center;
-  gap: 0.5em;
-}
-
-.title {
-  grid-column: 2;
-  text-align: center;
-}
-
-.form-task-name {grid-area: task-name;}
-.form-due-date {grid-area: due-date;}
-.form-task-input {grid-area: task-input;}
-.form-due-date-input {grid-area: due-date-input;}
-.form-add-task-button {grid-area: add-task-button;} 
-
-.task-form {
-  grid-column: 4;
-  display: grid;
-  gap: 0.8em;
-  grid-template-areas: 
-    "task-name       due-date"
-    "task-input      due-date-input"
-    "add-task-button add-task-button";
-
-    border: 1px solid #ccc;
-    padding: 0.5em;
-    border-radius: 8px;
-    background-color: #1a1a1a;
-}
-
-.task-list, .completed-tasks {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  
-}
-
-th, td {
-  padding: 0.6em 1em;
-  border-bottom: 1px solid #333;
-
-  max-width: 0;
-  word-break: break-word;
-  white-space: normal;
-  overflow-wrap: break-word;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -122,26 +60,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-.modal-backdrop {
-  position: fixed;
-  inset: 0; /* top:0 right:0 bottom:0 left:0 */
-  background: rgba(0, 0, 0, 0.5);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 1000;
-}
-
-.modal {
-  background: rgb(71, 70, 70);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border-color: #1a1a1a;
-  width: 300px;
-  max-width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-

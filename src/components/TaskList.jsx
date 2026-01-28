@@ -1,4 +1,5 @@
 import TaskItem from './TaskItem.jsx';
+import './TaskList.css';
 
 export default function TaskList({ tasks, onDeleteTask, onCompletedTask, onShowEditTaskModal }) {
   return (
