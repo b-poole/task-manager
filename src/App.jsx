@@ -40,22 +40,35 @@ function App() {
 
   return (
     <>
-      <Header onAddTask={handleAddTask} />
-      <Body tasks={tasks} 
-        onCompletedTask={handleCompletedTask} 
-        onDeleteTask={handleDeleteTask} 
-        onShowEditTaskModal={handleShowEditTaskModal}
-      />
-      {editingTask && createPortal(
-        <div className='modal-backdrop'>
-          <EditTaskModal
-            task={editingTask}
-            onClose={() => setEditingTask(null)}
-            onSave={handleSaveEditedTask} 
-          />
-        </div>,
-        document.getElementById('modal-root')
-      )}
+      <div className='main-content'>
+        <Header onAddTask={handleAddTask} />
+        <Body tasks={tasks} 
+          onCompletedTask={handleCompletedTask} 
+          onDeleteTask={handleDeleteTask} 
+          onShowEditTaskModal={handleShowEditTaskModal}
+        />
+        {editingTask && createPortal(
+          <div className='modal-backdrop'>
+            <EditTaskModal
+              task={editingTask}
+              onClose={() => setEditingTask(null)}
+              onSave={handleSaveEditedTask} 
+            />
+          </div>,
+          document.getElementById('modal-root')
+        )}
+      </div>
+      <footer className="site-footer">
+            Built by <strong>Barrett Poole</strong> | Frontend Developer | React & JS Enthusiast
+          <p>
+            <a href="https://www.linkedin.com/in/barrett-poole-630a3a145/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a> {' | '}
+            <a href="https://github.com/b-poole" target="_blank" rel="noopener noreferrer">
+               GitHub
+            </a>
+          </p>
+        </footer>
     </>
   )
 }
