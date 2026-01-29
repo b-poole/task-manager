@@ -15,7 +15,7 @@ export default function TaskRow({ task, onCompletedTask, onDeleteTask, onShowEdi
       <td>
         {task.completed ? "Completed" : "Pending"}
       </td>
-      <td>
+      <td className='action-buttons'>
         <button className='edit-button' onClick={() => {
           console.log("Editing task with id:", task.id);
           onShowEditTaskModal(task.id);

@@ -1,3 +1,5 @@
+import './FilterBar.css';
+
 export default function FilterBar({ onFilter }) {
   return (
     <div className='filter-bar'>
