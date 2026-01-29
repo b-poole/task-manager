@@ -18,3 +18,19 @@
     border-radius: 8px;
     background-color: #1a1a1a;
 }
+
+@media (max-width: 600px) {
+  .task-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* grid-area no longer matters in flex layout */
+  .form-task-name,
+  .form-due-date,
+  .form-task-input,
+  .form-due-date-input,
+  .form-add-task-button {
+    grid-area: unset;
+  }
+}

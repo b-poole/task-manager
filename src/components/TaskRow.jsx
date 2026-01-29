@@ -1,19 +1,16 @@
-export default function TaskItem({ task, dueDate = null, onCompletedTask, onDeleteTask, onShowEditTaskModal }) {
-
-  function handleCheckboxChange(event) {
-    onCompletedTask({ ...task, completed: event.target.checked });
-  }
-
+export default function TaskRow({ task, onCompletedTask, onDeleteTask, onShowEditTaskModal }) {
   return (
     <tr className='task'>
       <td>
-        <input type="checkbox" name="completed" checked={task.completed} onChange={handleCheckboxChange} />
+        <input type="checkbox" name="completed" checked={task.completed} onChange={() =>
+            onCompletedTask({ ...task, completed: !task.completed })
+          } />
       </td>
       <td className='task-name' name="name">
         {task.name}
       </td>
       <td className = 'due-date' name="dueDate">
-        {dueDate ? dueDate : task.dueDate}
+        {task.dueDate ? task.dueDate : '—'}
       </td>
       <td>
         {task.completed ? "Completed" : "Pending"}

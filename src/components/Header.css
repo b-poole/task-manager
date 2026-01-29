@@ -4,6 +4,7 @@
   width: 100%;
   align-items: center;
   gap: 0.5em;
+  padding-bottom: 2rem;
 }
 
 .title {
@@ -14,4 +15,18 @@
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+@media (max-width: 600px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .title {
+    grid-column: auto; /* reset grid behavior */
+    text-align: center;
+  }
 }

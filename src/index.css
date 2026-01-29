@@ -24,7 +24,6 @@ a:hover {
 
 html, body {
   margin: 0;
-  display: flex;
   width: 100%;
   box-sizing: border-box;
 }

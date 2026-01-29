@@ -1,0 +1,43 @@
+.task-card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task-card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.task-card-header .completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.task-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-card-actions button {
+  flex: 1;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
